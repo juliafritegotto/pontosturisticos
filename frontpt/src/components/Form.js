@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import '../components/Form.css'
-import '../components/Button.css'
+import './Form.css'
+import './Button.css'
 
-const AddPonto = ({ onAdd }) => {
+const Form = ({ onAdd }) => {
     const [nome, setNome] = useState('')
     const [uf, setUf] = useState('')
     const [cidade, setCidade] = useState('')
@@ -19,7 +19,7 @@ const AddPonto = ({ onAdd }) => {
         }
 
         onAdd({ nome, uf, cidade, referencia, descritivo })
-        
+
         setNome('')
         setUf('')
         setCidade('')
@@ -28,8 +28,6 @@ const AddPonto = ({ onAdd }) => {
     }
 
     return (
-      <div className='container'>
-      <h1>Cadastrar Ponto Turístico</h1>
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
                 <label>Nome</label>
@@ -72,11 +70,9 @@ const AddPonto = ({ onAdd }) => {
                     value={descritivo}
                     onChange={(e) => setDescritivo(e.target.value)} />
             </div>
-
             <input type='submit' value='Salvar' className='btn btn-block' />
         </form>
-        </div>
     )
 }
 
-export default AddPonto
+export default Form
