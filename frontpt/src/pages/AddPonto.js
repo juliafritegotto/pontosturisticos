@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../components/Form.css'
 import '../components/Button.css'
 
@@ -9,17 +9,54 @@ const AddPonto = ({ onAdd }) => {
     const [referencia, setReferencia] = useState('')
     const [descritivo, setDescritivo] = useState('')
 
+
+    //Código para busca de estados e cidades na API do IBGE
+    const [listUf, setListUf] = useState([])
+    const [listCity, setListCity] = useState([])
+
+    function loadUf() {
+        let url = 'https://servicodados.ibge.gov.br/'
+        url = url + 'api/v1/localidades/estados'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.nome.localeCompare(b.nome))
+                setListUf([...data]);
+            })
+    }
+    function loadCity(id) {
+        let url = 'https://servicodados.ibge.gov.br/api/v1/'
+        url = url + `localidades/estados/${id}/municipios`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.nome.localeCompare(b.nome))
+                setListCity([...data])
+            })
+    }
+
+    useEffect(() => {
+        loadUf()
+    }, [])
+
+    useEffect(() => {
+        if (uf) {
+            loadCity(uf)
+        }
+    }, [uf])
+
+
     const onSubmit = (e) => {
         e.preventDefault()
 
-        //Quais campos são obrigatórios?
+
         if (!nome) {
             alert('Por favor adicione o nome')
             return
         }
 
         onAdd({ nome, uf, cidade, referencia, descritivo })
-        
+
         setNome('')
         setUf('')
         setCidade('')
@@ -28,53 +65,56 @@ const AddPonto = ({ onAdd }) => {
     }
 
     return (
-      <div className='container'>
-      <h1>Cadastrar Ponto Turístico</h1>
-        <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Nome</label>
-                <input
-                    type='text'
-                    placeholder='Nome do ponto turístico'
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                />
-            </div>
-            <div className='form-control'>
-                <label>UF</label>
-                <input
-                    type='text'
-                    placeholder='Escolha o estado'
-                    value={uf}
-                    onChange={(e) => setUf(e.target.value)} />
-            </div>
-            <div className='form-control'>
-                <label>Cidade</label>
-                <input
-                    type='text'
-                    placeholder='Escolha a cidade'
-                    value={cidade}
-                    onChange={(e) => setCidade(e.target.value)} />
-            </div>
-            <div className='form-control'>
-                <label>Referência</label>
-                <input
-                    type='text'
-                    placeholder='É perto de onde?'
-                    value={referencia}
-                    onChange={(e) => setReferencia(e.target.value)} />
-            </div>
-            <div className='form-control'>
-                <label>Descritivo</label>
-                <input
-                    type='text'
-                    placeholder='Descritivo'
-                    value={descritivo}
-                    onChange={(e) => setDescritivo(e.target.value)} />
-            </div>
+        <div className='container'>
+            <h1>Cadastrar Ponto Turístico</h1>
+            <form className='add-form' onSubmit={onSubmit}>
+                <div className='form-control'>
+                    <label>Nome</label>
+                    <input
+                        type='text'
+                        placeholder='Nome do ponto turístico'
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                    />
+                </div>
 
-            <input type='submit' value='Salvar' className='btn btn-block' />
-        </form>
+                <div className='form-control'>
+                    <label>Referência</label>
+                    <input
+                        type='text'
+                        placeholder='É perto de onde?'
+                        value={referencia}
+                        onChange={(e) => setReferencia(e.target.value)} />
+                </div>
+                <div className='form-control'>
+                    <label>Descritivo</label>
+                    <input
+                        type='text'
+                        placeholder='Descritivo'
+                        value={descritivo}
+                        onChange={(e) => setDescritivo(e.target.value)} />
+                </div>
+
+                <div className='form-control'>
+
+                    <select value={uf} onChange={(e) => setUf(e.target.value)}>
+                        <option>Selecione um estado</option>
+                        {listUf.map((a, b) => (
+
+                            <option key={a.id} value={a.sigla}>{a.nome}</option>
+                        ))}
+                    </select>
+                    <select value={cidade} onChange={(e) => setCidade(e.target.value)}>
+                        <option>Selecione uma cidade</option>
+                        {listCity.map((a, b) => (
+                            <option key={a.id} value={a.sigla}>{a.nome}</option>
+                        ))}
+                    </select>
+                </div>
+
+                <input type='submit' value='Salvar' className='btn btn-block' />
+
+            </form>
         </div>
     )
 }
