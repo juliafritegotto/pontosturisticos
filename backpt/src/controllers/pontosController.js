@@ -14,11 +14,12 @@ module.exports = {
     },
 
     index: (req, res) => {
-        let sql = 'SELECT * FROM pontosturisticos';
+        const { page = 0, pageSize = 1000 } = req.params;
+        let sql = `SELECT * FROM pontosturisticos LIMIT ${pageSize} OFFSET ${page * pageSize}`;
         let query = db.query(sql, (err, results) => {
             if (err) throw err;
             console.log(results);
-            res.send('Post fetched');
+            res.send(results);
         });
     },
 
@@ -27,7 +28,7 @@ module.exports = {
         let query = db.query(sql, (err, result) => {
             if (err) throw err;
             console.log(result);
-            res.send('Post fetched');
+            res.send(results);
         });
     }
 
