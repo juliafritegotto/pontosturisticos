@@ -8,15 +8,23 @@
 }
 
 .container {
-  max-width: 500px;
+  max-width: 1400px;
   margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 0px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+.containerCadastro {
+  max-width: 500px;
+  margin: 50px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
 }
-
 .home,
 .pontos {
   display: flex;
@@ -31,4 +39,14 @@
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+.ponto.reminder {
+  border-left: 5px solid green;
+}
+
+.ponto h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

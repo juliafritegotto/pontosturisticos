@@ -9,46 +9,42 @@ const AddPonto = ({ onAdd }) => {
     const [referencia, setReferencia] = useState('')
     const [descritivo, setDescritivo] = useState('')
 
-
-    //Código para busca de estados e cidades na API do IBGE
     const [listUf, setListUf] = useState([])
     const [listCity, setListCity] = useState([])
 
-    function loadUf() {
-        let url = 'https://servicodados.ibge.gov.br/'
-        url = url + 'api/v1/localidades/estados'
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                data.sort((a, b) => a.nome.localeCompare(b.nome))
-                setListUf([...data]);
-            })
-    }
-    function loadCity(id) {
-        let url = 'https://servicodados.ibge.gov.br/api/v1/'
-        url = url + `localidades/estados/${id}/municipios`
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                data.sort((a, b) => a.nome.localeCompare(b.nome))
-                setListCity([...data])
-            })
-    }
-
     useEffect(() => {
+        const loadUf = async () => {
+            let url = 'https://servicodados.ibge.gov.br/'
+            url = url + 'api/v1/localidades/estados'
+            await fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    data.sort((a, b) => a.nome.localeCompare(b.nome))
+                    setListUf([...data]);
+                })
+        }
         loadUf()
     }, [])
 
     useEffect(() => {
         if (uf) {
+            const loadCity = async (id) => {
+                let url = 'https://servicodados.ibge.gov.br/api/v1/'
+                url = url + `localidades/estados/${id}/municipios`
+                await fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.sort((a, b) => a.nome.localeCompare(b.nome))
+                        setListCity([...data])
+                    })
+            }
             loadCity(uf)
         }
-    }, [uf])
 
+    }, [uf])
 
     const onSubmit = (e) => {
         e.preventDefault()
-
 
         if (!nome) {
             alert('Por favor adicione o nome')
@@ -65,7 +61,7 @@ const AddPonto = ({ onAdd }) => {
     }
 
     return (
-        <div className='container'>
+        <div className='containerCadastro'>
             <h1>Cadastrar Ponto Turístico</h1>
             <form className='add-form' onSubmit={onSubmit}>
                 <div className='form-control'>

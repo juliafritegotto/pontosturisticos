@@ -5,7 +5,8 @@ const Pontos = ({ pontos, onClick }) => {
     return (
         <>
             {pontos.map((ponto) => (
-                <h3 key={ponto.pkPonto}>{ponto.nome}</h3>
+                <Ponto key={ponto.pkPonto}
+                    ponto={ponto} />
             ))}
         </>
     )
