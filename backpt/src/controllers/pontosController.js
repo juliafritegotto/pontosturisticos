@@ -15,7 +15,7 @@ module.exports = {
 
     index: (req, res) => {
         const { page = 0, pageSize = 1000 } = req.params;
-        let sql = `SELECT * FROM pontosturisticos LIMIT ${pageSize} OFFSET ${page * pageSize}`;
+        let sql = `SELECT * FROM pontosturisticos ORDER BY pkPonto DESC LIMIT ${pageSize} OFFSET ${page * pageSize} `;
         let query = db.query(sql, (err, results) => {
             if (err) throw err;
             console.log(results);
