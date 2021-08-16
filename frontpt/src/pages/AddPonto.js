@@ -46,10 +46,10 @@ const AddPonto = ({ onAdd }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!nome) {
+         if (!nome) {
             alert('Por favor adicione o nome')
             return
-        }
+        } 
 
         onAdd({ nome, uf, cidade, referencia, descritivo })
 
@@ -61,6 +61,7 @@ const AddPonto = ({ onAdd }) => {
     }
 
     return (
+        
         <div className='containerCadastro'>
             <h1>Cadastrar Ponto Turístico</h1>
             <form className='add-form' onSubmit={onSubmit}>
@@ -92,7 +93,7 @@ const AddPonto = ({ onAdd }) => {
                 </div>
 
                 <div className='form-control'>
-
+                <label>Estado</label>
                     <select value={uf} onChange={(e) => setUf(e.target.value)}>
                         <option>Selecione um estado</option>
                         {listUf.map((a, b) => (
@@ -100,6 +101,9 @@ const AddPonto = ({ onAdd }) => {
                             <option key={a.id} value={a.sigla}>{a.nome}</option>
                         ))}
                     </select>
+                </div>
+                <div className='form-control'>
+                    <label>Cidade</label>
                     <select value={cidade} onChange={(e) => setCidade(e.target.value)}>
                         <option>Selecione uma cidade</option>
                         {listCity.map((a, b) => (
@@ -109,8 +113,8 @@ const AddPonto = ({ onAdd }) => {
                 </div>
 
                 <input type='submit' value='Salvar' className='btn btn-block' />
-
-            </form>
+              
+            </form>        
         </div>
     )
 }

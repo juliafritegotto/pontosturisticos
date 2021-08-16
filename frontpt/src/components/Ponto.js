@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as Md from 'react-icons/md';
+import * as Md from 'react-icons/md'
 
 
 const Ponto = ({ ponto, onClick }) => {

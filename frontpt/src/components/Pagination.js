@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './Pagination.css';
+import './Pagination.css'
 
 const Pagination = ({ pointsPerPage, totalPoints, paginate }) => {
     const pageNumbers = []

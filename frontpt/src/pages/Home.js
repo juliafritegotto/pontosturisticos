@@ -1,14 +1,13 @@
-import { useEffect, useState, useRef } from 'react'
-import Pontos from './Pontos'
-import Ponto from './Ponto'
-import Pagination from './Pagination'
+import { useEffect, useState } from 'react'
+import Pontos from '../components/Pontos'
+import Footer from '../components/Footer'
+import Pagination from '../components/Pagination'
 
 function Home({term}) {
   const [pontos, setPontos] = useState([])
-  const [ponto, setPonto] = useState([])
   const [ search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
-  const [pointsPerPage] = useState(10)
+  const [pointsPerPage] = useState(7)
  
   useEffect(() => {
     const getPontos = async () => {
@@ -57,7 +56,9 @@ function Home({term}) {
      
       <Pagination pointsPerPage={pointsPerPage} totalPoints={pontos.length} paginate={paginate}/>
     </div>
+    <Footer />
     </div>
+     
   );
 }
 
