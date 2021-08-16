@@ -1,21 +1,24 @@
-import { useEffect, useState } from 'react'
-import Pontos from '../components/Pontos'
-import Pagination from '../components/Pagination'
+import { useEffect, useState, useRef } from 'react'
+import Pontos from './Pontos'
+import Ponto from './Ponto'
+import Pagination from './Pagination'
 
-function Home() {
+function Home({term}) {
   const [pontos, setPontos] = useState([])
-  const [busca, setBusca] = useState('')
+  const [ponto, setPonto] = useState([])
+  const [ search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [pointsPerPage] = useState(10)
-
+ 
   useEffect(() => {
     const getPontos = async () => {
       const pontosFromServer = await fetchPontos()
-      setPontos(pontosFromServer)
-      setBusca(pontosFromServer)
+      setPontos(pontosFromServer)      
     }
     getPontos()
+    
   }, [])
+
 
   const fetchPontos = async () => {
     const res = await fetch('http://localhost:3003/pontos')
@@ -28,23 +31,32 @@ function Home() {
   const indexOfFirstPoint = indexOfLastPoint - pointsPerPage
   const currentPoints = pontos.slice(indexOfFirstPoint, indexOfLastPoint)
 
-  //Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+    //Change page
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber)      
+  }
   
+  const searchResults = (pontos)=> {
+    return pontos.filter(ponto =>ponto.nome.toLowerCase().indexOf(search) > -1)
+  }  
+
   return (
     <div className='container'>
 
       <div className='form-control'>
+
         <label>Digite um ponto turístico que deseja procura</label>                  
-        <input
+        <input    
             type='text'
             placeholder='Escreva o nome, localização do lugar desejado'
-            value={busca}
-            onChange={(e) => setBusca(e.target.value)} />
-      </div>
-
-      <Pontos pontos={currentPoints}/>
-      <Pagination pointsPerPage={pointsPerPage} totalPoints={pontos.length} paginate={paginate} />
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            />
+        
+        <Pontos pontos={search.length < 1 ? currentPoints : searchResults(currentPoints)}/>   
+     
+      <Pagination pointsPerPage={pointsPerPage} totalPoints={pontos.length} paginate={paginate}/>
+    </div>
     </div>
   );
 }
