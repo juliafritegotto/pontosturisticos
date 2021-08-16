@@ -45,7 +45,7 @@ function Home({term}) {
 
       <div className='form-control'>
 
-        <label>Digite um ponto turístico que deseja procura</label>                  
+        <label><b>Digite um ponto turístico que deseja procurar</b></label>                  
         <input    
             type='text'
             placeholder='Escreva o nome, localização do lugar desejado'
