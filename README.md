@@ -3,6 +3,14 @@
 ## Descrição do Projeto
 <p>Projeto para adicionar e listar pontos turísticos</p>
 
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org)
+- [Express](https://expressjs.com)
+- [React](https://reactjs.org)
+
 Pré Requisitos
 ============
 Node e Banco de Dados MySQL
