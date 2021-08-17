@@ -1,7 +1,6 @@
-# Pontos Turísticos
+# 🗺Pontos Turísticos
  
-## Descrição do Projeto
-<p>Projeto para adicionar e listar pontos turísticos</p>
+#### Projeto para adicionar e listar pontos turísticos</p>
 
 ### 🛠 Tecnologias
 
@@ -15,13 +14,13 @@ Pré Requisitos
 ============
 Node e Banco de Dados MySQL
 
-Clonando o repositório
+🖨 Clonando o repositório
 ============
 ```
 git clone https://github.com/juliafritegotto/pontosturisticos.git
 ```
 
-Configurando o backend
+⚙ Configurando o backend
 ============
 Primeiro é preciso instalar as dependências na pasta do backend.
 
@@ -46,7 +45,7 @@ Com o  MySQL rodando, é possível utilizar as rotas da API para criar uma datab
 Para criar a tabela pontosturisticos, coloque de volta a linha da database se caso tenha tirado, e acesse <http://localhost:3003/createtable>  
 
 
-Configurando o frontend
+📺 Configurando o frontend
 ============
 Com o backend rodando, basta na pasta do projeto frontend, frontpt, instalar as dependências com o comando
 
@@ -58,6 +57,6 @@ E rodar a aplicação
 ```
 yarn start
 ```
-Pronto ela está pronta para uso.
+🎉Pronto ela está pronta para uso.
 
 
