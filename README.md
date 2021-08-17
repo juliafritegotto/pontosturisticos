@@ -5,7 +5,7 @@
 
 Pré Requisitos
 ============
-Node e Banco de Dados MySQL instalados
+Node e Banco de Dados MySQL
 
 Clonando o repositório
 ============
