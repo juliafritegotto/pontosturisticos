@@ -14,7 +14,7 @@ module.exports = {
 
     //Create table 
     createtable: (req, res) => {
-        let sql = 'CREATE TABLE pontosturisticos (pkPonto int AUTO_INCREMENT, nome VARCHAR(255), uf VARCHAR(2), cidade VARCHAR(100), descritivo VARCHAR(255), referencia VARCHAR(255),   PRIMARY KEY (pkPonto))';
+        let sql = 'CREATE TABLE pontosturisticos (pkPonto int AUTO_INCREMENT, nome VARCHAR(100), uf VARCHAR(2), cidade VARCHAR(100), descritivo VARCHAR(100), referencia VARCHAR(255),   PRIMARY KEY (pkPonto))';
         db.query(sql, (err, result) => {
             if (err) throw err;
             console.log(result);
