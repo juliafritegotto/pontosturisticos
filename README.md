@@ -35,3 +35,19 @@ Para criar a database primeiro recorte a linha que específica a database  no co
 
 Agora cole de volta para criar a tabela pontosturisticos através de <http://localhost:3003/createtable>
 
+
+Configurando o frontend
+============
+Com o backend rodando, basta na pasta do projeto frontend, frontpt, instalar as dependências com o comando
+
+```
+yarn install
+```
+E rodar a aplicação
+
+```
+yarn start
+```
+Pronto ela está pronta para uso.
+
+
