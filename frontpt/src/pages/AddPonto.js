@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../components/Form.css'
 import '../components/Button.css'
+import { Link } from 'react-router-dom'
 
 const AddPonto = ({ onAdd }) => {
     const [nome, setNome] = useState('')
@@ -113,6 +114,7 @@ const AddPonto = ({ onAdd }) => {
                 </div>
 
                 <input type='submit' value='Salvar' className='btn btn-block' />
+                <Link to="/" className="btn btn-block">Voltar</Link>
               
             </form>        
         </div>
