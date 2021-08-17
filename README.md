@@ -12,26 +12,29 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 Pré Requisitos
 ============
-Node e Banco de Dados MySQL
+Node,  MySQL e Git
 
 🖨 Clonando o repositório
 ============
-```
-git clone https://github.com/juliafritegotto/pontosturisticos.git
+```sh
+$ git clone https://github.com/juliafritegotto/pontosturisticos.git
 ```
 
 ⚙ Configurando o backend
 ============
 Primeiro é preciso instalar as dependências na pasta do backend.
 
-```
-yarn install
+```sh
+$ yarn install
+     # ou
+$ npm install
 ```
 
 Então rodar o servidor 
-
-```
-yarn start
+```sh
+$ yarn start
+   # ou
+$ npm start
 ```
 
 O servidor iniciará na porta 3003,  acesse: <http://localhost:3003>
@@ -49,14 +52,17 @@ Com o  MySQL rodando, é possível utilizar as rotas da API para criar uma datab
 ============
 Com o backend rodando, basta na pasta do projeto frontend, frontpt, instalar as dependências com o comando
 
-```
-yarn install
+```sh
+$ yarn install
+     # ou
+$ npm install
 ```
 E rodar a aplicação
 
-```
-yarn start
+```sh
+$ yarn start
+   # ou
+$ npm start
 ```
 🎉 **Pronto, a aplicação está pronta para uso.**
-
 
