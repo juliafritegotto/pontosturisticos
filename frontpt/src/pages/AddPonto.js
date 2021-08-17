@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import '../components/Form.css'
-import '../components/Button.css'
 import { Link } from 'react-router-dom'
 
 const AddPonto = ({ onAdd }) => {

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Pontos from '../components/Pontos'
-import Footer from '../components/Footer'
 import Pagination from '../components/Pagination'
 
 function Home({term}) {
@@ -56,7 +55,9 @@ function Home({term}) {
      
       <Pagination pointsPerPage={pointsPerPage} totalPoints={pontos.length} paginate={paginate}/>
     </div>
-    <Footer />
+    <footer>
+            <p>Copyright&copy; 2021</p>          
+    </footer>
     </div>
      
   );

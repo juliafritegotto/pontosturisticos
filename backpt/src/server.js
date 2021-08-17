@@ -16,4 +16,10 @@ app.get('/', (req, res) => {
     res.send('hello world')
 });
 
+app.use((error,req,res, next)=>{
+    res.status(error.status || 500)
+    res.json({error: error.message})
+});
+
+
 app.listen(port, () => { console.log(`Listening to port ${port}!!`) });
