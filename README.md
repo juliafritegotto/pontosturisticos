@@ -57,6 +57,6 @@ E rodar a aplicação
 ```
 yarn start
 ```
-🎉Pronto ela está pronta para uso.
+🎉 **Pronto, a aplicação está pronta para uso.**
 
 
