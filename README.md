@@ -35,7 +35,7 @@ Com o  MySQL rodando, é possível utilizar as rotas da API para criar uma datab
 
 *Agora para criar a database primeiro recorte a linha que específica da database  no connection.js (database: 'dbpontosturisticos') e então acesse: <http://localhost:3003/createdb>
 
-Para criar a tabela pontosturisticos, coloque de volta a linha da database se caso tenha tirado, então basta acessar <http://localhost:3003/createtable>  
+Para criar a tabela pontosturisticos, coloque de volta a linha da database se caso tenha tirado, e acesse <http://localhost:3003/createtable>  
 
 
 Configurando o frontend
