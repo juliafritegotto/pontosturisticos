@@ -31,9 +31,9 @@ O servidor iniciará na porta 3003,  acesse: <http://localhost:3003>
 
 Com o  MySQL rodando, é possível utilizar as rotas da API para criar uma database e uma tabela.
 
-Para criar a database primeiro recorte a linha que específica a database  no connection.js (database: 'dbpontosturisticos') e então acesse: <http://localhost:3003/createdb>
+Para criar a database primeiro recorte a linha que específica da database  no connection.js (database: 'dbpontosturisticos') e então acesse: <http://localhost:3003/createdb>
 
-Agora cole de volta no arquivo connection e crie a tabela pontosturisticos através de <http://localhost:3003/createtable>
+Agora cole de volta no arquivo connection a linha e crie a tabela pontosturisticos através de <http://localhost:3003/createtable>
 
 
 Configurando o frontend
